@@ -1,0 +1,12 @@
+.env
+*.key
+*.pem
+credentials.json
+
+# Dossiers à ignorer
+node_modules/
+dist/
+build/
+.vscode/
+.DS_Store
+Thumbs.db
