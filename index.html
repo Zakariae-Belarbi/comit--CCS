@@ -2,6 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
+    <!-- Add CSP meta tag -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https://media.licdn.com https://images.pexels.com; font-src 'self' https://fonts.gstatic.com;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>اللجنة الثقافية والاجتماعية | ENSAM Rabat</title>
     <meta name="description" content="اللجنة الثقافية والاجتماعية بالمدرسة الوطنية العليا للفنون والمهن بالرباط" />
@@ -13,9 +15,25 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Noto+Sans+Arabic:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add these to your head section -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Remove duplicate Font Awesome imports -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Keep only one instance -->
+
+    <!-- Add preconnect for Google Fonts -->
+     <link href="https://fonts.googleapis.com/css2?
+        family=Cairo:wght@600;700&
+        family=Tajawal:wght@400;500&
+        display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Noto+Sans+Arabic:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
     :root {
@@ -39,12 +57,15 @@
     body { 
       font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
       direction: rtl;
+      background-color: #f9fafb; /* Blanc cassé doux */
+    color: #1e293b;
       overflow-x: hidden;
       background: var(--gray-100);
       text-align: initial;
       padding: 0;
       max-width: none;
       color: var(--gray-800);
+      
     }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
     .header {
@@ -52,7 +73,8 @@
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(15px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.4s ease, background 0.4s ease;
+        transition: background 0.4s ease;
+        pointer-events: auto;
     }
     .header.scrolled { background: rgba(255, 255, 255, 0.98); }
     .header.hidden-nav { transform: translateY(-100%); }
@@ -86,47 +108,195 @@
     .btn-secondary-3d { background: rgba(255, 255, 255, 0.2); color: white; border: 2px solid rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
     .btn-secondary-3d:hover { background: rgba(255, 255, 255, 0.9); color: var(--ensam-blue); transform: translateY(-5px) rotateX(15deg); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); }
     .section-title { text-align: center; margin-bottom: 80px; }
+    .section-title h3 {
+  font-size: 3.5rem;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 25px;
+  font-weight: 900;
+}
+
     .section-title h2 { font-size: 3.5rem; background: linear-gradient(135deg, var(--ensam-blue), var(--bright-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; font-weight: 900; }
     .section-title p { font-size: 1.3rem; color: var(--gray-600); max-width: 700px; margin: 0 auto; line-height: 1.8; }
-    
+    .hero {
+  padding-top: 100px; /* Ajuste selon la hauteur réelle du header */
+}
     /* Activities Section */
-    .activities { padding: 120px 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); position: relative; }
-    .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
+    .activities { padding: 120px 0;   background: linear-gradient(135deg, #e3f2fd, #e0f7fa); /* Bleu clair + teal clair */
+ position: relative; }
+    .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
     .activity-card { background: white; border-radius: 25px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; cursor: pointer; transform-style: preserve-3d; will-change: transform; }
     .activity-card:hover { box-shadow: var(--shadow-hover); }
     .activity-image { position: relative; height: 280px; overflow: hidden; border-radius: 25px 25px 0 0; }
     .activity-image img { width: 100%; height: 100%; object-fit: cover; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
     .activity-card:hover .activity-image img { transform: scale(1.15); }
-    .activity-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0, 85, 165, 0.8), rgba(255, 111, 0, 0.8)); opacity: 0; transition: opacity 0.5s ease; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.1rem; }
+    .activity-overlay { position: absolute; inset: 0; background:rgba(0, 85, 165, 0.2); opacity: 0; transition: opacity 0.5s ease; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.1rem; }
     .activity-card:hover .activity-overlay { opacity: 1; }
     .activity-content { padding: 40px; }
-    .activity-content h3 { font-size: 1.7rem; color: var(--ensam-blue); margin-bottom: 15px; transition: all 0.4s ease; font-weight: 800; }
+    .activity-content h3 { font-size: 1.3rem; color: var(--ensam-blue); margin-bottom: 15px; transition: all 0.4s ease; font-weight: 800; }
     .activity-card:hover .activity-content h3 { color: var(--bright-orange); }
     .activity-date { color: var(--bright-orange); font-size: 1rem; margin-bottom: 20px; font-weight: 600; }
     .activity-description { color: var(--gray-600); line-height: 1.7; margin-bottom: 25px; font-size: 1.1rem; }
     .activity-meta { display: flex; justify-content: space-between; align-items: center; font-size: 1rem; color: var(--gray-600); font-weight: 600; }
     
     /* Magazine Section */
-    .magazine { padding: 120px 0; background: linear-gradient(135deg, var(--ensam-blue) 0%, var(--bright-orange) 50%, var(--teal-green) 100%); position: relative; overflow: hidden; }
-    .magazine::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100%; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>'); opacity: 0.3; }
-    .magazine .section-title h2 { color: white; -webkit-text-fill-color: white; }
-    .magazine .section-title p { color: rgba(255, 255, 255, 0.9); }
-    .magazine-featured { margin-bottom: 100px; position: relative; z-index: 2; }
-    .featured-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 30px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2); display: grid; grid-template-columns: 1fr 1fr; gap: 0; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1); border: 1px solid rgba(255, 255, 255, 0.3); will-change: transform; }
-    .featured-image { position: relative; overflow: hidden; }
-    .featured-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-    .featured-card:hover .featured-image img { transform: scale(1.1); }
-    .featured-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-    .featured-badge { display: inline-block; background: linear-gradient(135deg, var(--bright-orange), #ff8f00); color: white; padding: 12px 25px; border-radius: 30px; font-size: 1rem; font-weight: 700; margin-bottom: 25px; width: fit-content; box-shadow: 0 5px 20px rgba(255, 111, 0, 0.4); }
-    .featured-content h3 { font-size: 3rem; color: var(--ensam-blue); margin-bottom: 25px; font-weight: 900; }
-    .featured-meta { color: var(--gray-600); margin-bottom: 25px; font-size: 1.1rem; font-weight: 600; }
-    .featured-description { color: var(--gray-600); line-height: 1.8; margin-bottom: 40px; font-size: 1.2rem; }
-    .magazine-buttons { display: flex; gap: 20px; }
-    .btn-glow { padding: 15px 30px; border: none; border-radius: 30px; font-weight: 700; cursor: pointer; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); font-size: 1.1rem; }
-    .btn-glow.primary { background: linear-gradient(135deg, var(--bright-orange), #ff8f00); color: white; box-shadow: 0 0 30px rgba(255, 111, 0, 0.4); }
-    .btn-glow.primary:hover { box-shadow: 0 0 50px rgba(255, 111, 0, 0.8); animation: glowPulse 2s ease-in-out infinite; transform: translateY(-3px) scale(1.05); }
-    .btn-glow.secondary { background: transparent; color: var(--ensam-blue); border: 3px solid var(--ensam-blue); }
-    .btn-glow.secondary:hover { background: var(--ensam-blue); color: white; box-shadow: 0 0 40px rgba(0, 85, 165, 0.6); transform: translateY(-3px) scale(1.05); }
+    .magazine {
+  padding: 40px 0;
+  background: linear-gradient(to right, #5d88e4, #f0820c); /* Bleu → orange doux */
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.magazine::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+  opacity: 0.15;
+}
+
+.magazine .section-title h2 {
+  color: #ffffff;
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.magazine .section-title p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.magazine-featured {
+  margin-top: 40px;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.featured-card {
+  background: linear-gradient(135deg, #f0f4f8, #e8f5e9);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.featured-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; 
+  background: transparent;
+}
+
+.featured-image img {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+
+.featured-card:hover .featured-image img {
+  transform: scale(1.05);
+}
+
+.featured-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured-badge {
+  background: linear-gradient(135deg, #ff6a00, #ff9800);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(255, 111, 0, 0.4);
+}
+
+.featured-content h3 {
+  font-size: 2rem;
+  color: #003366;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.featured-meta {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.featured-description {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+
+.magazine-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-glow {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-glow.primary {
+  background: linear-gradient(135deg, #ff6a00, #ff9800);
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 111, 0, 0.3);
+}
+
+.btn-glow.primary:hover {
+  box-shadow: 0 0 30px rgba(255, 111, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-glow.secondary {
+  background: transparent;
+  color: #003366;
+  border: 2px solid #003366;
+}
+
+.btn-glow.secondary:hover {
+  background: #003366;
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 51, 102, 0.4);
+}
+
     
     /* Enhanced Magazine Slider */
     .magazine-slider { position: relative; width: 100%; height: 550px; perspective: 2500px; margin-top: 20px; }
@@ -145,24 +315,364 @@
     .slider-btn { width: 60px; height: 60px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; font-size: 2rem; line-height: 56px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); user-select: none; }
     .slider-btn:hover { background: white; color: var(--ensam-blue); transform: scale(1.1); }
     
-    /* Branches Section */
+    .about-section {
+  padding: 60px 0 40px;
+  background: var(--light-bg, #f9f9f9);
+}
+
+.about-section .section-title h2 {
+  font-size: 2rem;
+  color: var(--ensam-blue);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: justify;
+  max-width: 800px;
+  margin: 0 auto;
+  direction: rtl;
+}
+.about-section {
+  padding: 60px 0;
+  background: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
+}
+
+.about-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  direction: rtl;
+}
+
+.about-text {
+  flex: 1 1 45%;
+  text-align: right;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.8;
+  order: 1;
+}
+
+.about-video {
+  flex: 1 1 50%;
+  text-align: center;
+  order: 2;
+}
+
+/* Style commun aux vidéos */
+.about-video video {
+  width: auto;
+  height: 600px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+
+/* Par défaut : mobile */
+.about-video-pc {
+  display: none;
+}
+.about-video-mobile {
+  display: block;
+}
+
+/* Sur écran large (PC) */
+@media (min-width: 769px) {
+  .about-video-pc {
+    display: block;
+    transform-origin: center;
+  }
+
+  .about-video-mobile {
+    display: none;
+  }
+}
+
+.decale-gauche {
+  position: relative;
+  right: -40px; /* décale vraiment vers la gauche */
+}
+
+.section-title {
+  color: var(--ensam-blue);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.section {
+            padding: 80px 0;
+        }
+        
+        .section-title2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 1px 0 rgba(0,0,0,0.08);
+            background: linear-gradient(to right, #e50c0c, #5ec1ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-bottom: 20px;
+        }
+        
+        .section-title2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            border-radius: 2px;
+        }
+        
+        /* Gallery Filters */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--ensam-blue);
+            color: var(--ensam-blue);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--ensam-blue);
+            color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 85, 165, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--white);
+            font-size: 2rem;
+        }
+        
+        /* Enhancements Only */
+        .gallery-item {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 85, 165, 0.25);
+            z-index: 2;
+        }
+        
+        .gallery-overlay {
+            background: linear-gradient(135deg, rgba(0, 85, 165, 0.85), rgba(255, 111, 0, 0.7));
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+        
+        .gallery-overlay-content {
+            text-align: right;
+            width: 100%;
+        }
+        
+        .gallery-category {
+            color: #ffd700;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-title {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .gallery-date {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+        
+        .gallery-overlay i {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-overlay i:hover {
+            background: var(--bright-orange);
+            transform: scale(1.1);
+        }
+        
+        .gallery-item.video .gallery-overlay i {
+            background: rgba(230, 57, 70, 0.7);
+        }
+        
+        .gallery-item.video .gallery-overlay i:hover {
+            background: var(--red);
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(0, 85, 165, 0.6);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            color: var(--bright-orange);
+            transform: rotate(90deg);
+        }
+        
+        .lightbox-caption {
+            color: #fff;
+            text-align: center;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            max-width: 800px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 220px;
+            }
+            
+            .gallery-overlay {
+                padding: 15px;
+            }
+            
+            .gallery-title {
+                font-size: 1.1rem;
+            }
+        }
     .branches {
-        padding: 120px 0;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        position: relative;
-        overflow: hidden;
-    }
-    .branches::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(0,85,165,0.05)" /></pattern></defs><rect width="100" height="100" fill="url(%23dots)" /></svg>');
-        opacity: 0.3;
-        z-index: 0;
-    }
+    padding: 100px 0;
+    background: linear-gradient(135deg, #eef5fa 0%, #dceaf5 100%);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.branches::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="softdots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(0,85,165,0.02)" /></pattern></defs><rect width="100" height="100" fill="url(%23softdots)" /></svg>');
+    opacity: 0.1;
+    z-index: 0;
+}
+
     .branches-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -271,11 +781,11 @@
     .branch-card.partenariat:hover { border-color: var(--gold); box-shadow: 0 20px 50px rgba(255, 215, 0, 0.2); }
     
     /* Products Section */
-    .products { padding: 120px 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); position: relative; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+    .products { padding: 120px 0; background: linear-gradient(to bottom, #fff7ed, #899db3); position: relative; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
     .product-card { background: white; border-radius: 25px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; cursor: pointer; transform-style: preserve-3d; will-change: transform; }
     .product-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
-    .product-image { position: relative; height: 300px; overflow: hidden; }
+    .product-image { position: relative; height: 350px; overflow: hidden; }
     .product-image img { width: 100%; height: 100%; object-fit: cover; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
     .product-card:hover .product-image img { transform: scale(1.1); }
     .product-badge { position: absolute; top: 20px; left: 20px; background: var(--bright-orange); color: white; padding: 5px 15px; border-radius: 20px; font-weight: 700; z-index: 2; }
@@ -288,6 +798,42 @@
     .btn-outline:hover { background: var(--ensam-blue); color: white; }
     
     /* Footer */
+    .footer-content {
+        font-family: 'Tajawal', sans-serif;
+        color: #333;
+        line-height: 1.6;
+        padding: 40px 20px;
+        background: #fafafa;
+        }
+
+        .footer-content h2 {
+        font-family: 'Cairo', sans-serif;
+        font-weight: 700;
+        font-size: 2.2rem;      /* ~35px */
+        color: #00457c;
+        margin-bottom: 16px;
+        }
+
+        .footer-content p {
+        font-weight: 400;
+        font-size: 1rem;        /* ~16px */
+        margin-bottom: 16px;
+        }
+
+        .footer-content .contact-info {
+        margin-top: 24px;
+        font-size: 0.9rem;      /* ~14px */
+        opacity: 0.75;
+        }
+
+        .footer-content .contact-info strong {
+        font-weight: 500;
+        }
+
+        .footer-content .contact-info p:last-child {
+        margin-top: 30px;
+        }
+
     .footer-enhanced { position: relative; min-height: 60vh; background: linear-gradient(135deg, var(--bright-orange) 0%, var(--teal-green) 100%); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 80px 0; }
     .footer-background { position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="grad" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(%23grad)" /></svg>'); opacity: 0.3; }
     .footer-year { position: absolute; font-size: 25rem; font-weight: 900; color: rgba(255, 255, 255, 0.08); user-select: none; animation: yearPulse 6s ease-in-out infinite; top: 50%; left: 50%; transform: translate(-50%, -50%); }
@@ -309,9 +855,7 @@
     .social-link:hover { background: rgba(255, 255, 255, 0.9); color: var(--ensam-blue); transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); }
     .contact-info { text-align: center; margin-top: 30px; font-size: 1.1rem; opacity: 0.9; }
     .ripple { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.6); transform: scale(0); animation: ripple 0.6s linear; pointer-events: none; }
-    .hero {
-          padding-top: 100px; /* Ajuste selon la hauteur réelle du header */
-        }
+    
     /* Animations */
     @keyframes ripple { to { transform: scale(4); opacity: 0; } }
     @keyframes heroSlideIn { from { opacity: 0; transform: translateY(50px) rotateX(20deg); } to { opacity: 1; transform: translateY(0) rotateX(0); } }
@@ -328,7 +872,7 @@
     
     /* Responsive */
     @media (max-width: 1200px) {
-        .hero-content h1 { font-size: 3.5rem; }
+        .hero-content h1 { font-size: 3rem; }
         .hero-content h2 { font-size: 1.8rem; }
         .section-title h2 { font-size: 2.8rem; }
         .footer-content h2 { font-size: 2.8rem; }
@@ -353,7 +897,7 @@
         .hero-content p { font-size: 1.2rem; }
         .activities-grid, .products-grid { grid-template-columns: 1fr; gap: 30px; }
         .magazine-slider { height: 420px; }
-        .magazine-card { width: 280px; height: 400px; }
+        .magazine-card { width: 250px; height: 400px; }
         .magazine-card-image { height: 350px; }
         .footer-year { font-size: 12rem; }
         .footer-ccs { font-size: 8rem; }
@@ -381,6 +925,912 @@
         *, *::before, *::after { animation: none !important; transition: none !important; } 
         .branch-card { transform: none !important; opacity: 1 !important; }
     }
+
+    #club-members {
+  padding: 80px 0;
+background: linear-gradient(145deg, #f2f6fa 0%, #e6f0f8 50%, #d8e9f0 100%);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+#club-members::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(0,0,0,0.05)" /></pattern></defs><rect width="100" height="100" fill="url(%23dots)" /></svg>');
+  opacity: 0.1;
+  z-index: -1;
+}
+
+#club-members .section-title {
+  font-size: 2.5rem;
+  color: var(--ensam-blue);
+  margin-bottom: 40px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+
+.wrapper {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.inner {
+  --w: 160px; /* largeur plus grande */
+  --h: 220px; /* hauteur plus grande */
+  --translateZ: calc((var(--w) + var(--h)) + 0px);
+  --rotateX: -15deg;
+  --perspective: 1000px;
+  position: absolute;
+  width: var(--w);
+  height: var(--h);
+  top: 25%;
+  left: calc(50% - (var(--w) / 2));
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform: perspective(var(--perspective));
+}
+
+.card {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  inset: 0;
+  transform: 
+    rotateY(calc((360deg / var(--quantity)) * var(--index)))
+    translateZ(var(--translateZ))
+    scale(calc(1 + 0.2 * cos(calc((360deg / var(--quantity)) * var(--index)))))
+    translateY(calc(-30px * cos(calc((360deg / var(--quantity)) * var(--index)))));
+  transition: transform 0.5s ease;
+}
+
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Boutons rotation */
+.rotate-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffffcc;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.rotate-btn:hover {
+  background-color: #eee;
+}
+
+.rotate-left {
+  left: 20px;
+}
+
+.rotate-right {
+  right: 20px;
+}
+
+.contact-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-header h2 {
+            font-size: 3.2rem;
+            color: var(--ensam-blue);
+            margin-bottom: 15px;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--ensam-blue), var(--bright-orange));
+            border-radius: 3px;
+        }
+        
+        .contact-header p {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 85, 165, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--ensam-blue);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-item:hover::before {
+            background: var(--bright-orange);
+            width: 8px;
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--ensam-blue), var(--teal-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 85, 165, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .contact-details {
+            flex: 1;
+        }
+        
+        .contact-details h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--ensam-blue);
+        }
+        
+        .contact-details p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--gray-600);
+        }
+        
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(0, 85, 165, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to left, var(--ensam-blue), var(--bright-orange));
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: var(--ensam-blue);
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 85, 165, 0.2);
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--gray-800);
+            font-size: 1.1rem;
+            font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--bright-orange);
+            box-shadow: 0 0 15px rgba(255, 111, 0, 0.2);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--ensam-blue), var(--bright-orange));
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 85, 165, 0.3);
+            font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .submit-btn:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 85, 165, 0.4);
+        }
+        
+        .social-section {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .social-title {
+            font-size: 1.5rem;
+            color: var(--ensam-blue);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--ensam-blue), var(--teal-green));
+            color: white;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 85, 165, 0.3);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-10px) scale(1.1);
+            background: linear-gradient(135deg, var(--bright-orange), #ff8f00);
+            box-shadow: 0 15px 30px rgba(255, 111, 0, 0.3);
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 85, 165, 0.1);
+            margin-top: 20px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .contact-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 85, 165, 0.1);
+            font-size: 1.1rem;
+            color: var(--gray-600);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-header h2 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-header h2 {
+                font-size: 2.4rem;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-bottom: 15px;
+            }
+            
+            .social-links {
+                gap: 15px;
+            }
+            
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-header h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-header p {
+                font-size: 1rem;
+            }
+            
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .contact-details h4 {
+                font-size: 1.2rem;
+            }
+            
+            .contact-details p {
+                font-size: 1rem;
+            }
+            
+            .contact-form-container {
+                padding: 25px;
+            }
+            
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            
+            .submit-btn {
+                padding: 14px;
+                font-size: 1.1rem;
+            }
+        }
+
+
+
+.glow-card {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  flex: 0 0 260px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+}
+
+.glow-card--center {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  z-index: 10;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glow-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.glow-card--center:hover {
+  transform: translateY(-8px) scale(1.07);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+.glow-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.glow-main-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 4rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.glow-card-section {
+  margin-bottom: 5rem;
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, #ffffff 0%, #e0f2fe 60%, #dbeafe 100%);
+  padding: 4rem 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.glow-card-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='25' cy='25' r='1.5'/%3E%3Ccircle cx='75' cy='25' r='1.5'/%3E%3Ccircle cx='25' cy='75' r='1.5'/%3E%3Ccircle cx='75' cy='75' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.glow-section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: #1e293b;
+  letter-spacing: -0.015em;
+  text-align: center;
+}
+
+.glow-scroll-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+}
+
+.glow-cards-wrapper {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.glow-cards-container {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  will-change: transform;
+  cursor: grab;
+}
+
+.glow-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.glow-cards-container:active {
+  cursor: grabbing;
+}
+
+.glow-card-wide {
+  flex: 0 0 400px;
+}
+
+.glow-card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, 
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.05) 75%,
+      rgba(255, 255, 255, 0.15) 100%
+  );
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.glow-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.05) 100%
+  );
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.glow-card:hover::before,
+.glow-card:focus-within::before {
+  opacity: 1;
+}
+
+.glow-card:hover::after,
+.glow-card:focus-within::after {
+  opacity: 1;
+}
+
+.glow-card.highlighted {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 15px 50px rgba(255, 111, 0, 0.25);
+  z-index: 10;
+  border-color: rgba(255, 111, 0, 0.3);
+}
+
+.glow-card:active {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.glow-card-image {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.glow-card-wide .glow-card-image {
+  height: 240px;
+}
+
+.glow-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.glow-card:hover .glow-card-image img {
+  transform: scale(1.1);
+  filter: brightness(1) contrast(1.2);
+}
+
+.glow-card-content {
+  padding: 1.5rem;
+  background: linear-gradient(180deg, 
+      rgba(0, 0, 0, 0.8) 0%, 
+      rgba(0, 0, 0, 0.9) 100%
+  );
+  position: relative;
+}
+
+.glow-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.glow-card-subtitle {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+.glow-scroll-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(10, 6, 6, 0.918);
+  color: #74c6e9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(241, 237, 237, 0.772);
+  z-index: 10;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glow-scroll-btn::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.2) 100%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.glow-scroll-btn:hover::before {
+  opacity: 1;
+}
+
+.glow-scroll-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.glow-scroll-btn:active {
+  transform: scale(0.95);
+}
+
+/* Media queries restent inchangés */
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .glow-container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .glow-scroll-container {
+        gap: 0.5rem;
+    }
+    
+    .glow-scroll-btn {
+        display: none;
+    }
+    
+    .glow-cards-wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .glow-cards-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .glow-cards-container {
+        padding: 1rem;
+        gap: 1rem;
+        cursor: default;
+    }
+    
+    .glow-card {
+        flex: 0 0 240px;
+    }
+    
+    .glow-card-wide {
+        flex: 0 0 320px;
+    }
+    
+    .glow-main-title {
+        margin-bottom: 2rem;
+    }
+    
+    .glow-section-title {
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .glow-card {
+        flex: 0 0 200px;
+    }
+    
+    .glow-card-wide {
+        flex: 0 0 280px;
+    }
+    
+    .glow-card-image {
+        height: 240px;
+    }
+    
+    .glow-card-wide .glow-card-image {
+        height: 180px;
+    }
+    
+    .glow-card-content {
+        padding: 1rem;
+    }
+    
+    .glow-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .glow-card-subtitle {
+        font-size: 0.85rem;
+    }
+}
+
+/* Enhanced Loading Animation */
+.glow-card-image img {
+    opacity: 0;
+    animation: glowFadeInScale 0.8s ease forwards;
+}
+
+@keyframes glowFadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Focus styles for accessibility */
+.glow-card:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 4px;
+}
+
+.glow-scroll-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 4px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .glow-card,
+    .glow-card-image img,
+    .glow-scroll-btn,
+    .glow-cards-container {
+        transition: none;
+        animation: none;
+    }
+    
+    .glow-card:hover {
+        transform: none;
+    }
+    
+    .glow-card:hover .glow-card-image img {
+        transform: none;
+    }
+    
+    .glow-scroll-btn:hover {
+        transform: none;
+    }
+}
+
+/* Additional visual enhancements */
+.glow-cards-container {
+    /* Add subtle gradient overlay at edges for fade effect */
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+}
+
+@media (max-width: 768px) {
+    .glow-cards-container {
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -388,7 +1838,7 @@
         <div class="container">
           <div class="header-content">
             <div class="logo">
-              <img src="https://media.licdn.com/dms/image/v2/C4D03AQG7pKXoP5pDiA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1609583264880?e=1755734400&v=beta&t=i-f_F-h70QpZR45FD8RUWlgmWXnWXPmbPN7LHmv5_jE" alt="شعار اللجنة" />
+              <img src="https://media.licdn.com/dms/image/v2/C4D03AQG7pKXoP5pDiA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1609583264880?e=1755734400&v=beta&t=i-f_F-h70QpZR45FD8RUWlgmWXnWXPmbPN7LHmv5_jE" alt="شعار اللجنة"  loading="lazy"/>
               <div class="logo-text">
                 <h1>اللجنة الثقافية والاجتماعية</h1>
                 <p>ENSAM Rabat</p>
@@ -397,6 +1847,7 @@
             <nav>
               <ul class="nav">
                 <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about-ccs">من نحن</a></li>
                 <li><a href="#activities">الأنشطة</a></li>
                 <li><a href="#branches">فروع اللجنة</a></li>
                 <li><a href="#magazine">مجلة القمة</a></li>
@@ -427,65 +1878,103 @@
             </div>
         </section>
 
+        <section id="about-ccs" class="about-section rtl">
+            <div class="container about-grid">
+                <!-- Vidéo PC -->
+                <div class="about-video about-video-pc decale-gauche">
+                    <video id="pcVideo" controls controlsList="nofullscreen "disablePictureInPicture>
+                        <source src="video2.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- Vidéo Mobile -->
+                <div class="about-video about-video-mobile">
+                    <video controls>
+                        <source src="video.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="about-text">
+                <h2 class="section-title">من نحن</h2>
+                 <p>
+اللجنة الثقافية والاجتماعية بالمدرسة الوطنية العليا للفنون والمهن - الرباط، هي فضاء طلابي فعّال ينبض بالحيوية والعطاء، يجمع بين الرسالة التربوية والدور المجتمعي، ويساهم في بناء طالب ملتزم ومؤثر في محيطه داخل المدرسة وخارجها.
+<br><br>
+- <strong>نشر القيم الروحيّة</strong>: من خلال تنظيم محاضرات، مسابقات قرآنية، وتلاوات جماعية، نرسخ قيم التقوى والوعي الروحي في نفوس الطلبة.
+<br>
+- <strong>خدمة المجتمع</strong>: نُطلق قوافل خيرية، نقوم بزيارات ميدانية، ونجمع التبرعات لتقديم الدعم للفئات المحتاجة، انطلاقاً من مسؤوليتنا الإنسانية.
+<br>
+- <strong>الإحسان، الاحترام، والإبداع</strong>: نؤمن بأن الإبداع ينبع من روح الإحسان والاحترام المتبادل، ونعمل باستمرار على تقديم أنشطة نوعية ومبتكرة تُشرف المؤسسة وتعكس قيمها.
+</p>
+
+                </div>
+            </div>
+            </section>
+
+
         <section id="activities" class="activities">
             <div class="container">
                 <div class="section-title">
-                    <h2>أنشطتنا المتميزة</h2>
+                    <h2>أنشطتنا </h2>
                     <p>مجموعة شاملة من الأنشطة الثقافية والاجتماعية والعلمية التي تهدف إلى بناء شخصية الطالب المهندس وإثراء تجربته الجامعية</p>
                 </div>
                 <div class="activities-grid">
-                    <div class="activity-card">
-                        <div class="activity-image">
-                            <img src="https://media.licdn.com/dms/image/v2/D4E22AQHAB2pibhlIYQ/feedshare-shrink_1280/feedshare-shrink_1280/0/1679753942243?e=1752710400&v=beta&t=7IPd3jdCJ287bW68ygUrwMYJDzFoT63LkzrwsmsjoqI" alt="مسابقة تجويد القرآن" />
-                            <div class="activity-overlay"><span>اقرأ المزيد</span></div>
-                        </div>
-                        <div class="activity-content">
-                            <h3>الأسبوع القرآني</h3>
-                            <div class="activity-date">مارس - أبريل 2024</div>
-                            <div class="activity-description">نظّمت اللجنة الثقافية والاجتماعية النسخة السادسة من الأسبوع القرآني تحت شعار:«القرآن ورمضان»،وذلك في إطار خلق فضاء روحاني يُعزّز التواصل مع طلبة المدرسة، ويغرس فيهم القيم الدينية في أجواء إيمانية سامية.</div>
-                            <div class="activity-meta"><span>150+ مشارك</span><span>ديني - ثقافي</span></div>
-                        </div>
+  <!-- الأسبوع القرآني -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E22AQHAB2pibhlIYQ/feedshare-shrink_1280/feedshare-shrink_1280/0/1679753942243?e=1752710400&v=beta&t=7IPd3jdCJ287bW68ygUrwMYJDzFoT63LkzrwsmsjoqI" alt="مسابقة تجويد القرآن" loading="lazy"/>
+                    <div class="activity-overlay"><span>اقرأ المزيد</span></div>
                     </div>
-                    <div class="activity-card">
-                        <div class="activity-image">
-                            <img src="https://media.licdn.com/dms/image/v2/C4D22AQEpQvlX1Ma9sg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1596284588876?e=1752710400&v=beta&t=x3cM_c7wnB_1INBj4otaBHyy_KgG1yN8bP52h8kJ-x0" alt="أولمبياد ENSAM" />
-                            <div class="activity-overlay"><span>تفاصيل الأولمبياد</span></div>
-                        </div>
-                        <div class="activity-content">
-                            <h3>بصمة العيد</h3>
-                            <div class="activity-date">فبراير 2024</div>
-                            <div class="activity-description">يُعدّ مشروع بصمة العيد مبادرة سنوية تُشرف عليها اللجنة الثقافية والاجتماعية، وتهدف إلى توزيع أضاحي العيد على الأسر المعوزة.
-وقد نُفِّذ المشروع هذا العام بشراكة مع جمعية إنسان للعلوم والعمل الخيري، حيث تم توزيع 62 أضحية في عددٍ من المدن، إدخالًا للفرحة والبسمة على وجوه المحتاجين، وتجسيدًا لروح التكافل والتآزر في مناسبة العيد المباركة.</div>
-                            <div class="activity-meta"><span>300+ مشارك</span><span>رياضي - علمي</span></div>
-                        </div>
+                    <div class="activity-content">
+                    <h3>الأسبوع القرآني</h3>
+                    <div class="activity-date">مارس - أبريل 2024</div>
+                    <div class="activity-description">نظّمت اللجنة الثقافية والاجتماعية النسخة السادسة من الأسبوع القرآني تحت شعار:«القرآن ورمضان»،وذلك في إطار خلق فضاء روحاني يُعزّز التواصل مع طلبة المدرسة، ويغرس فيهم القيم الدينية في أجواء إيمانية سامية.</div>
+                    <div class="activity-meta"><span>45 مشارك</span><span>ديني - ثقافي</span></div>
                     </div>
-                    <div class="activity-card">
-                        <div class="activity-image">
-                            <img src="https://media.licdn.com/dms/image/v2/C4E22AQEvGphIFJ_d0A/feedshare-shrink_800/feedshare-shrink_800/0/1676971159612?e=1752710400&v=beta&t=zK2nvxzyQcNYd7BI0YIaLpWie3RKTO7ZNF1hPiumXNE" alt="مهندس حامل لكتاب الله" />
-                            <div class="activity-overlay"><span>فعالية تكريمية</span></div>
-                        </div>
-                        <div class="activity-content">
-                            <h3>مجلة القمة</h3>
-                            <div class="activity-date">3 ماي 2024</div>
-                            <div class="activity-description">هي مجلة فكرية وعلمية تُجسّد البصمة المميّزة للجنة الثقافية والاجتماعية في المسار الثقافي والفكري لتاريخ المدرسة.
-تهدف المجلة إلى إبراز إبداعات الطلبة، وتشجيعهم على تنمية مواهبهم في مجال الكتابة، وتوسيع آفاقهم المعرفية في ميادين العلوم والتكنولوجيا، لتكون منصة تعبّر عن فكر الطالب المهندس وصوته.</div>
-                            <div class="activity-meta"><span>50+ مكرم</span><span>تكريمي - روحاني</span></div>
-                        </div>
+                </div>
+
+                <!-- بصمة العيد -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                    <img src="https://media.licdn.com/dms/image/v2/C4D22AQEpQvlX1Ma9sg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1596284588876?e=1752710400&v=beta&t=x3cM_c7wnB_1INBj4otaBHyy_KgG1yN8bP52h8kJ-x0" alt="أولمبياد ENSAM"  loading="lazy"/>
+                    <div class="activity-overlay"><span>تفاصيل المبادرة</span></div>
                     </div>
-                    <div class="activity-card">
-                        <div class="activity-image">
-                            <img src="https://media.licdn.com/dms/image/v2/C4D22AQFTprCbgb1DDQ/feedshare-shrink_800/feedshare-shrink_800/0/1642957406780?e=1752710400&v=beta&t=6yxl69C-XEw7hZD69u_CR8dNj2A9IbuG438FFGl7vLQ" />
-                            <div class="activity-overlay"><span>تفاصيل الأولمبياد</span></div>
-                        </div>
-                        <div class="activity-content">
-                            <h3>قافلة البسمة</h3>
-                            <div class="activity-date">فبراير 2024</div>
-                            <div class="activity-description">تهدف قافلة البسمة إلى رعاية منطقة تعاني من الهشاشة، والعمل على النهوض بها إلى مستوى يضمن توفّر الضروريات الأساسية للعيش الكريم، بما يُمكّن سكانها من مواصلة مسار التنمية داخل منطقتهم بثبات وأمل.</div>
-                            <div class="activity-meta"><span>300+ مشارك</span><span>رياضي - علمي</span></div>
-                        </div>
+                    <div class="activity-content">
+                    <h3>بصمة العيد</h3>
+                    <div class="activity-date">فبراير 2024</div>
+                    <div class="activity-description">يُعدّ مشروع بصمة العيد مبادرة سنوية تُشرف عليها اللجنة الثقافية والاجتماعية، وتهدف إلى توزيع أضاحي العيد على الأسر المعوزة. وقد نُفِّذ المشروع هذا العام بشراكة مع جمعية إنسان، حيث تم توزيع 62 أضحية في عددٍ من المدن.</div>
+                    <div class="activity-meta"><span>30 متطوع</span><span>اجتماعي - خيري</span></div>
+                    </div>
+                </div>
+
+                <!-- مجلة القمة -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                    <img src="https://media.licdn.com/dms/image/v2/C4E22AQEvGphIFJ_d0A/feedshare-shrink_800/feedshare-shrink_800/0/1676971159612?e=1752710400&v=beta&t=zK2nvxzyQcNYd7BI0YIaLpWie3RKTO7ZNF1hPiumXNE" alt="مهندس حامل لكتاب الله"  loading="lazy"/>
+                    <div class="activity-overlay"><span>تفاصيل المجلة</span></div>
+                    </div>
+                    <div class="activity-content">
+                    <h3>مجلة القمة</h3>
+                    <div class="activity-date">3 ماي 2024</div>
+                    <div class="activity-description">هي مجلة فكرية وعلمية تُجسّد البصمة المميّزة للجنة الثقافية والاجتماعية. تهدف إلى إبراز إبداعات الطلبة وتشجيعهم على الكتابة وتوسيع آفاقهم الفكرية والعلمية.</div>
+                    <div class="activity-meta"><span>15 مشارك</span><span>ثقافي - فكري</span></div>
+                    </div>
+                </div>
+
+                <!-- قافلة البسمة -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                    <img src="https://media.licdn.com/dms/image/v2/C4D22AQFTprCbgb1DDQ/feedshare-shrink_800/feedshare-shrink_800/0/1642957406780?e=1752710400&v=beta&t=6yxl69C-XEw7hZD69u_CR8dNj2A9IbuG438FFGl7vLQ" alt="قافلة البسمة"  loading="lazy"/>
+                    <div class="activity-overlay"><span>تفاصيل القافلة</span></div>
+                    </div>
+                    <div class="activity-content">
+                    <h3>قافلة البسمة</h3>
+                    <div class="activity-date">فبراير 2024</div>
+                    <div class="activity-description">تهدف قافلة البسمة إلى رعاية منطقة قروية هشة من خلال تقديم دعم طبي، تربوي، واجتماعي. تتضمن القافلة ترميمات، قفف غذائية، ونشاطات للأطفال.</div>
+                    <div class="activity-meta"><span>40 مشارك</span><span>اجتماعي - تنموي</span></div>
                     </div>
                 </div>
             </div>
+
         </section>
 
         <!-- Branches Section -->
@@ -497,85 +1986,85 @@
                 </div>
                 
                 <div class="branches-grid">
-                    <!-- Media Cellule -->
-                    <div class="branch-card media">
-                        <div class="branch-logo">
-                            <i class="fas fa-camera"></i>
-                        </div>
-                        <h3 class="branch-title">Cellule Media</h3>
-                        <p class="branch-description">
-                            La cellule média est chargée de la communication et de la promotion des événements de la CCS à travers les réseaux sociaux et les supports visuels.
-                        </p>
+                
+                    <div class="branch-card gestion">
+                    <div class="branch-logo">
+                        <i class="fas fa-cogs"></i>
                     </div>
-                    
-                    <!-- Al Masjid Cellule -->
+                    <h3 class="branch-title">فرع التسيير</h3>
+                    <p class="branch-description">
+                        يهتم هذا الفرع بالتنظيم الداخلي والتنسيق بين باقي الفروع، ويعتبر الجهة المسؤولة عن المصادقة على البرنامج السنوي، مع إمكانية إلغاء أي نشاط لا يتوافق مع أهداف اللجنة.
+                    </p>
+                    </div>
+
+                    <!-- فرع المسجد -->
                     <div class="branch-card masjid">
-                        <div class="branch-logo">
-                            <i class="fas fa-mosque"></i>
-                        </div>
-                        <h3 class="branch-title">Cellule AL MASJID</h3>
-                        <p class="branch-description">
-                            La cellule AL MASJID s'occupe de l'organisation des activités religieuses et spirituelles au sein de l'école.
-                        </p>
+                    <div class="branch-logo">
+                        <i class="fas fa-mosque"></i>
                     </div>
-                    
-                    <!-- Animation Culturelle Cellule -->
+                    <h3 class="branch-title">فرع المسجد</h3>
+                    <p class="branch-description">
+                        يُعتبر نواة اللجنة، ويهتم بالجانب الإيماني والتربوي للطلبة، فضلاً عن العناية بمسجد المؤسسة وتنظيم الأنشطة الدينية.
+                    </p>
+                    </div>
+
+                    <!-- فرع الأعمال الثقافية -->
                     <div class="branch-card culturelle">
-                        <div class="branch-logo">
-                            <i class="fas fa-theater-masks"></i>
-                        </div>
-                        <h3 class="branch-title">Cellule Culturelle</h3>
-                        <p class="branch-description">
-                            Cette cellule organise des événements culturels, des conférences et des ateliers pour enrichir la vie étudiante.
-                        </p>
+                    <div class="branch-logo">
+                        <i class="fas fa-book-open"></i>
                     </div>
-                    
-                    <!-- Animation Sportive Cellule -->
-                    <div class="branch-card sportive">
-                        <div class="branch-logo">
-                            <i class="fas fa-running"></i>
-                        </div>
-                        <h3 class="branch-title">Cellule sociale</h3>
-                        <p class="branch-description">
-Dévouée à soutenir les personnes défavorisées et les communautés vulnérables, la Cellule Sociale œuvre avec compassion pour apporter aide, espoir et opportunités là où les besoins se font le plus ressentir, contribuant ainsi à un impact humain durable.
-                        </p>
+                    <h3 class="branch-title">فرع الأعمال الثقافية</h3>
+                    <p class="branch-description">
+                        يهتم بتطوير الفكر والمهارات لدى الطلبة، عبر تنظيم لقاءات فكرية وورشات معرفية في مختلف المجالات.
+                    </p>
                     </div>
-                    
-                    <!-- Logistique Cellule -->
-                    <div class="branch-card logistique">
-                        <div class="branch-logo">
-                            <i class="fas fa-truck-loading"></i>
-                        </div>
-                        <h3 class="branch-title">Cellule Logistique </h3>
-                        <p class="branch-description">
-                            Veille à la coordination logistique et au bon déroulement des projets et activités du comité, en assurant leur organisation de manière efficace et structurée.
-                        </p>
+
+                    <!-- فرع الأعمال الاجتماعية -->
+                    <div class="branch-card sociale">
+                    <div class="branch-logo">
+                        <i class="fas fa-hands-helping"></i>
                     </div>
-                    
-                    <!-- Partenariat Cellule -->
-                    <div class="branch-card partenariat">
-                        <div class="branch-logo">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3 class="branch-title">Cellule Partenariat & Sponsoring</h3>
-                        <p class="branch-description">
-                            Chargée de la recherche, de la négociation et de la gestion des partenariats avec les entreprises et les institutions, cette cellule veille à assurer un soutien financier et matériel aux projets du comité, tout en valorisant l’image du club auprès de ses partenaires.
-                        </p>
+                    <h3 class="branch-title">فرع الأعمال الاجتماعية</h3>
+                    <p class="branch-description">
+                        يُعنى بالعمل التطوعي والخيري داخل المؤسسة وخارجها، من خلال مبادرات إنسانية ذات أثر مجتمعي.
+                    </p>
                     </div>
-                </div>
+
+                    <!-- فرع الإعلام -->
+                    <div class="branch-card media">
+                    <div class="branch-logo">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="branch-title">فرع الإعلام</h3>
+                    <p class="branch-description">
+                        يهتم بتغطية الأنشطة إعلامياً، ويعمل على تطوير مهارات التصميم والتواصل البصري لدى الطلبة.
+                    </p>
+                    </div>
+
+                    <!-- فرع التمويل -->
+                    <div class="branch-card finance">
+                    <div class="branch-logo">
+                        <i class="fas fa-donate"></i>
+                    </div>
+                    <h3 class="branch-title">فرع التمويل</h3>
+                    <p class="branch-description">
+                        يهتم بتوفير الميزانية للجنة، وتحديد التكاليف اللازمة لكل نشاط، وضمان دعم مالي مستمر للأنشطة.
+                    </p>
+                    </div>
+
             </div>
         </section>  
-
+        
         <section id="magazine" class="magazine">
             <div class="container">
                 <div class="section-title">
-                    <h2>مجلة القمة</h2>
+                    <h3>مجلة القمة</h3>
                     <p>منصة إعلامية رائدة تجمع بين التميز العلمي والإبداع الثقافي، تسعى لنشر المعرفة وتبادل الخبرات في المجال الهندسي والثقافي</p>
                 </div>
 
                 <div class="magazine-featured">
                     <div class="featured-card">
-                        <div class="featured-image"><img src="https://media.licdn.com/dms/image/v2/C4E22AQFea2g9kDEvOw/feedshare-shrink_800/feedshare-shrink_800/0/1674667057146?e=1752710400&v=beta&t=IUMmtFXe7DQKhq63KngWO8kaH5rTVyZRKbQpxBxb14A" alt="العدد السابع" /></div>
+                        <div class="featured-image"><img src="https://media.licdn.com/dms/image/v2/C4E22AQFea2g9kDEvOw/feedshare-shrink_800/feedshare-shrink_800/0/1674667057146?e=1752710400&v=beta&t=IUMmtFXe7DQKhq63KngWO8kaH5rTVyZRKbQpxBxb14A" alt="العدد السابع"  loading="lazy"/></div>
                         <div class="featured-content">
                             <div class="featured-badge">الإصدار الأحدث 2025</div>
                             <h3>العدد السابع</h3>
@@ -589,35 +2078,166 @@ Dévouée à soutenir les personnes défavorisées et les communautés vulnérab
                         </div>
                     </div>
                 </div>
+        </section>
+            
+        
+        <section id="club-members">
+            <body>
+            <h2 class="section-title">الأعداد السابقة</h2>
+            <div class="wrapper">
+                <button id="rotateLeft" class="rotate-btn rotate-left">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+                <div class="inner" style="--quantity: 8;">
+                <div class="card" style="--index: 0;--color-card: 142, 249, 252;">
+                    <div class="img"><img src="https://media.licdn.com/dms/image/v2/D4E22AQHSs6ZFcTWqAA/feedshare-shrink_800/feedshare-shrink_800/0/1693177037923?e=1752710400&v=beta&t=RRk3TrQf33L7nF131MHz9MdU65eoksZ69G0z5A9FGiY" alt="عضو 1"  loading="lazy"/></div>
+                </div>
+                <div class="card" style="--index: 1;--color-card: 142, 252, 204;">
+                    <div class="img"><img src="https://media.licdn.com/dms/image/v2/D4E22AQE-FV5hGhfuaw/feedshare-shrink_1280/feedshare-shrink_1280/0/1684559041427?e=1752710400&v=beta&t=Eq40XDycTm2uD5a0JU_7DZTJ3_-wvzHVFeVRwahJD1g" alt="عضو 2"  loading="lazy"/></div>
+                </div>
+                <div class="card" style="--index: 2;--color-card: 142, 252, 157;">
+                    <div class="img"><img src="https://media.licdn.com/dms/image/v2/C4E22AQGZ8Rtr5bfU9A/feedshare-shrink_1280/feedshare-shrink_1280/0/1677188421641?e=1752710400&v=beta&t=iUhfPBFdwJeR3icMyib64anmTN_JDPIxSuvHM65IVF8" alt="عضو 3" loading="lazy" /></div>
+                </div>
+                <div class="card" style="--index: 0;--color-card: 142, 249, 252;">
+                    <div class="img"><img src="https://media.licdn.com/dms/image/v2/D4E22AQHSs6ZFcTWqAA/feedshare-shrink_800/feedshare-shrink_800/0/1693177037923?e=1752710400&v=beta&t=RRk3TrQf33L7nF131MHz9MdU65eoksZ69G0z5A9FGiY" alt="عضو 1"  loading="lazy"/></div>
+                </div>
+                <div class="card" style="--index: 0;--color-card: 142, 249, 252;">
+                    <div class="img"><img src="https://media.licdn.com/dms/image/v2/D4E22AQHSs6ZFcTWqAA/feedshare-shrink_800/feedshare-shrink_800/0/1693177037923?e=1752710400&v=beta&t=RRk3TrQf33L7nF131MHz9MdU65eoksZ69G0z5A9FGiY" alt="عضو 1" loading="lazy" /></div>
+                </div>
+                <div class="card" style="--index: 0;--color-card: 142, 249, 252;">
+                    <div class="img"><img src="https://media.licdn.com/dms/image/v2/D4E22AQHSs6ZFcTWqAA/feedshare-shrink_800/feedshare-shrink_800/0/1693177037923?e=1752710400&v=beta&t=RRk3TrQf33L7nF131MHz9MdU65eoksZ69G0z5A9FGiY" alt="عضو 1" loading="lazy" /></div>
+                </div>
+                <div class="card" style="--index: 3;--color-card: 215, 252, 142;">
+                    <div class="img"><img src="https://media.licdn.com/dms/image/v2/C4E22AQFv_mY7jEhdJg/feedshare-shrink_800/feedshare-shrink_800/0/1676140181772?e=1752710400&v=beta&t=5P3HQj5ddfiflhyHzJb117NUC94U4NPz42FHjuhukmE" alt="عضو 4" loading="lazy" /></div>
+                </div>
+                <div class="card" style="--index: 4;--color-card: 252, 252, 142;">
+                    <div class="img"><img src="https://media.licdn.com/dms/image/v2/C4D22AQEdY3oSR4Ub0w/feedshare-shrink_800/feedshare-shrink_800/0/1614084579476?e=1752710400&v=beta&t=4XspvKnsRXbKwL9dBNTlK0IrEP4JHSwKc3txCwpLM88" alt="عضو 5" loading="lazy" /></div>
+                </div>
+                
+                </div>
+                <button id="rotateRight" class="rotate-btn rotate-right">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15,18 9,12 15,6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </section>
+                        
+         <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title2">معرض الصور والفيديو</h2>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-layer-group"></i> الكل
+                </button>
+                <button class="filter-btn" data-filter="quran">
+                    <i class="fas fa-book-quran"></i> مسابقة القرآن
+                </button>
+                <button class="filter-btn" data-filter="olympics">
+                    <i class="fas fa-trophy"></i> الأولمبياد
+                </button>
+                <button class="filter-btn" data-filter="magazine">
+                    <i class="fas fa-book-open"></i> المجلة
+                </button>
+                <button class="filter-btn" data-filter="events">
+                    <i class="fas fa-calendar-alt"></i> الفعاليات
+                </button>
+            </div>
 
-                <div class="magazine-slider">
-                    <h3>الأعداد السابقة</h3>
-                    <div class="slider-container">
-                        <div class="magazine-card">
-                            <div class="magazine-card-image"><img src="https://media.licdn.com/dms/image/v2/D4E22AQHSs6ZFcTWqAA/feedshare-shrink_800/feedshare-shrink_800/0/1693177037923?e=1752710400&v=beta&t=RRk3TrQf33L7nF131MHz9MdU65eoksZ69G0z5A9FGiY" /></div>
-                            <div class="magazine-card-content"><h4>العدد السادس</h4><div class="magazine-card-meta">يناير 2025 • 56 صفحة</div><p>ملف شامل حول الطاقات المتجددة ودورها الحيوي في التنمية المستدامة.</p></div>
-                        </div>
-                        <div class="magazine-card">
-                            <div class="magazine-card-image"><img src="https://media.licdn.com/dms/image/v2/D4E22AQE-FV5hGhfuaw/feedshare-shrink_1280/feedshare-shrink_1280/0/1684559041427?e=1752710400&v=beta&t=Eq40XDycTm2uD5a0JU_7DZTJ3_-wvzHVFeVRwahJD1g" /></div>
-                        </div>
-                        <div class="magazine-card">
-                            <div class="magazine-card-image"><img src="https://media.licdn.com/dms/image/v2/C4E22AQGZ8Rtr5bfU9A/feedshare-shrink_1280/feedshare-shrink_1280/0/1677188421641?e=1752710400&v=beta&t=iUhfPBFdwJeR3icMyib64anmTN_JDPIxSuvHM65IVF8"/></div>
-                        </div>
-                        <div class="magazine-card">
-                            <div class="magazine-card-image"><img src="https://media.licdn.com/dms/image/v2/C4E22AQFv_mY7jEhdJg/feedshare-shrink_800/feedshare-shrink_800/0/1676140181772?e=1752710400&v=beta&t=5P3HQj5ddfiflhyHzJb117NUC94U4NPz42FHjuhukmE"  /></div>
-                        </div>
-                         <div class="magazine-card">
-                            <div class="magazine-card-image"><img src="https://media.licdn.com/dms/image/v2/C4D22AQEdY3oSR4Ub0w/feedshare-shrink_800/feedshare-shrink_800/0/1614084579476?e=1752710400&v=beta&t=4XspvKnsRXbKwL9dBNTlK0IrEP4JHSwKc3txCwpLM88"  /></div>
-                        </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Quran Competition Items -->
+                <div class="gallery-item" data-category="quran" style="background-image: url('https://images.pexels.com/photos/4471314/pexels-photo-4471314.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <div class="gallery-category">مسابقة القرآن</div>
+                        <h3 class="gallery-title">النسخة السادسة من المسابقة السنوية</h3>
+                        <div class="gallery-date">مارس 2024</div>
                     </div>
-                    <div class="slider-nav">
-                        <button id="prevBtn" class="slider-btn">›</button>
-                        <button id="nextBtn" class="slider-btn">‹</button>
+                </div>
+                
+                <div class="gallery-item" data-category="quran" style="background-image: url('https://images.pexels.com/photos/4471318/pexels-photo-4471318.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <div class="gallery-category">مسابقة القرآن</div>
+                        <h3 class="gallery-title">تكريم الفائزين بالمسابقة</h3>
+                        <div class="gallery-date">مارس 2024</div>
+                    </div>
+                </div>
+                
+                <!-- Olympics Items -->
+                <div class="gallery-item" data-category="olympics" style="background-image: url('https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <div class="gallery-category">الأولمبياد</div>
+                        <h3 class="gallery-title">المسابقة الرياضية السنوية</h3>
+                        <div class="gallery-date">يناير 2024</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="olympics" style="background-image: url('https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <div class="gallery-category">الأولمبياد</div>
+                        <h3 class="gallery-title">نهائي كرة القدم</h3>
+                        <div class="gallery-date">فبراير 2024</div>
+                    </div>
+                </div>
+                
+                <!-- Magazine Items -->
+                <div class="gallery-item" data-category="magazine" style="background-image: url('https://images.pexels.com/photos/2104151/pexels-photo-2104151.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <div class="gallery-category">المجلة</div>
+                        <h3 class="gallery-title">إطلاق العدد السابع</h3>
+                        <div class="gallery-date">مايو 2024</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="magazine" style="background-image: url('https://images.pexels.com/photos/3183198/pexels-photo-3183198.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <div class="gallery-category">المجلة</div>
+                        <h3 class="gallery-title">ورشة عمل للمحررين</h3>
+                        <div class="gallery-date">أبريل 2024</div>
+                    </div>
+                </div>
+                
+                <!-- Events Items -->
+                <div class="gallery-item" data-category="events" style="background-image: url('https://images.pexels.com/photos/2422290/pexels-photo-2422290.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <div class="gallery-category">الفعاليات</div>
+                        <h3 class="gallery-title">اليوم المفتوح للطلبة</h3>
+                        <div class="gallery-date">ديسمبر 2023</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item video" data-category="events" style="background-image: url('https://images.pexels.com/photos/3568520/pexels-photo-3568520.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-play"></i>
+                        <div class="gallery-category">الفعاليات</div>
+                        <h3 class="gallery-title">الحفل الختامي للأنشطة</h3>
+                        <div class="gallery-date">يونيو 2024</div>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            
+        </div>
         
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <span class="lightbox-close" id="lightbox-close">&times;</span>
+                <img id="lightbox-img" src="" alt="">
+                <video id="lightbox-video" controls style="display:none;"></video>
+                <div id="lightbox-caption" class="lightbox-caption"></div>
+            </div>
+        </div>
+    </section>
         <!-- Products Section -->
         <section id="products" class="products">
             <div class="container">
@@ -671,7 +2291,6 @@ Dévouée à soutenir les personnes défavorisées et les communautés vulnérab
                             </div>
                         </div>
                     </div>
-                    <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
                             <img src="image copy 5.png" alt="مجلة القمة مطبوعة" />
@@ -690,10 +2309,196 @@ Dévouée à soutenir les personnes défavorisées et les communautés vulnérab
                 </div>
             </div>
         </section>
+      <!-- Glow Card Section: Featured Models -->
+      <section class="glow-card-section">
+            <h2 class="glow-section-title">أعضاء اللجنة</h2>
+            <div class="glow-scroll-container">
+                <button type="button" class="glow-scroll-btn glow-scroll-btn-left" aria-label="Scroll left">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15,18 9,12 15,6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="glow-cards-wrapper">
+                    <div class="glow-cards-container" data-glow-scroll-container>
+                        <div class="glow-card">
+                            <div class="glow-card-image">
+                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop" alt="Christy" loading="lazy">
+                            </div>
+                            <div class="glow-card-content">
+                                <h3 class="glow-card-title">Christy</h3>
+                                <p class="glow-card-subtitle">Fashion Model</p>
+                            </div>
+                        </div>
+                        
+                        <div class="glow-card">
+                            <div class="glow-card-image">
+                                <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop" alt="Alina" loading="lazy">
+                            </div>
+                            <div class="glow-card-content">
+                                <h3 class="glow-card-title">Alina</h3>
+                                <p class="glow-card-subtitle">Portrait Artist</p>
+                            </div>
+                        </div>
+                        
+                        <div class="glow-card">
+                            <div class="glow-card-image">
+                                <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop" alt="Margot" loading="lazy">
+                            </div>
+                            <div class="glow-card-content">
+                                <h3 class="glow-card-title">Margot</h3>
+                                <p class="glow-card-subtitle">Creative Director</p>
+                            </div>
+                        </div>
+                        
+                        <div class="glow-card">
+                            <div class="glow-card-image">
+                                <img src="https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop" alt="Sofia" loading="lazy">
+                            </div>
+                            <div class="glow-card-content">
+                                <h3 class="glow-card-title">Sofia</h3>
+                                <p class="glow-card-subtitle">Photographer</p>
+                            </div>
+                        </div>
+                        
+                        <div class="glow-card">
+                            <div class="glow-card-image">
+                                <img src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop" alt="Elena" loading="lazy">
+                            </div>
+                            <div class="glow-card-content">
+                                <h3 class="glow-card-title">Elena</h3>
+                                <p class="glow-card-subtitle">Art Director</p>
+                            </div>
+                        </div>
+                        
+                        <div class="glow-card">
+                            <div class="glow-card-image">
+                                <img src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop" alt="Maya" loading="lazy">
+                            </div>
+                            <div class="glow-card-content">
+                                <h3 class="glow-card-title">Maya</h3>
+                                <p class="glow-card-subtitle">Visual Artist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="glow-scroll-btn glow-scroll-btn-right" aria-label="Scroll right">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </section>
       </main>
+        <div class="contact-container">
+        <div class="contact-header">
+            <h2>اتصل بنا</h2>
+            <p>يسعدنا تواصلكم معنا لأي استفسار أو مقترح. فريقنا جاهز للرد على استفساراتكم في أي وقت</p>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>العنوان</h4>
+                        <p>المدرسة الوطنية العليا للفنون والمهن، الرباط، المغرب</p>
+                    </div>
+                </div>
 
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>الهاتف</h4>
+                        <p>212600-860318+</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>البريد الإلكتروني</h4>
+                        <p>comite.cs.ensam@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>واتساب</h4>
+                        <p>212600-860318+</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required placeholder="أدخل بريدك الإلكتروني">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">الموضوع</label>
+                        <input type="text" id="subject" name="subject" required placeholder="موضوع رسالتك">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="اكتب رسالتك هنا..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="social-section">
+            <h3 class="social-title">تابعنا على وسائل التواصل الاجتماعي</h3>
+            <div class="social-links">
+                <a href="https://t.me/ccs_ensamr" class="social-link" aria-label="تيليجرام" target="_blank">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+
+                <a href="https://www.instagram.com/comite_culturel_social_ensamr/" class="social-link" aria-label="إنستغرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="http://www.youtube.com/@ccs-ensam-rabat" class="social-link" aria-label="يوتيوب">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ccsensamr/" class="social-link" aria-label="لينكد إن">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.9208421187936!2d-6.88001514283828!3d33.968874019997244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76cd636524c15%3A0x44e58194058c4051!2s%C3%89cole%20Nationale%20sup%C3%A9rieure%20d%E2%80%99Arts%20et%20M%C3%A9tiers%20de%20Rabat!5e0!3m2!1sfr!2sma!4v1751890263815!5m2!1sfr!2sma" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        
+        
       <footer id="contact" class="footer-enhanced">
-        <div class="footer-background"></div>
         <div class="footer-year">2025</div>
         <div class="footer-ccs">CCS</div>
         <div class="footer-circles">
@@ -704,34 +2509,41 @@ Dévouée à soutenir les personnes défavorisées et les communautés vulnérab
         </div>
         <div class="footer-content">
             <h2>اللجنة الثقافية والاجتماعية</h2>
-            <p>نؤمن أن دورنا لا يقتصر على الجوانب الأكاديمية فقط، بل يتعدّاها لنترك بصمة حقيقية داخل المدرسة وخارجها، من خلال مبادرات هادفة تعبّر عن هوية الطالب المهندس وروح الانتماء والمسؤولية.</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ccsensamr/" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/comite_culturel_social_ensamr/" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="+212 600-860318" class="social-link" aria-label=""><i class="fas fa-phone"></i></a>
-                <a href="comite.cs.ensam@gmail.com" class="social-link" aria-label="Email"><i class="far fa-envelope"></i></a>
-            </div>
+            <p>
+                اللجنة الثقافية والاجتماعية هي لجنة طلابية تابعة لجمعية طلبة المدرسة الوطنية العليا للفنون والمهن بالرباط. تأسست سنة 2015 بهدف صقل شخصية الطالب المهندس في أبعادها المختلفة: الاجتماعي والعلاقاتي، الثقافي والمعرفي، التربوي والأخلاقي، والتقني والمهاراتي. تسعى اللجنة إلى بث روح المبادرة والإبداع والمسؤولية في صفوف الطلبة، تحت شعار: احترام، إحسان، إبداع.
+            </p>
             <div class="contact-info">
                 <p><strong>المدرسة الوطنية العليا للفنون والمهن - الرباط</strong></p>
                 <p></p>
-                <p style="margin-top: 30px; opacity: 0.8;">&copy; 2025 جميع الحقوق محفوظة للجنة الثقافية والاجتماعية</p>
+                <p>&copy; 2025 جميع الحقوق محفوظة للجنة الثقافية والاجتماعية</p>
             </div>
         </div>
+
+
       </footer>
-    <script>
-      // Helper function for smooth scrolling
-      function scrollToSection(sectionId) {
+<script>
+    // Video seek
+    const pcVideo = document.getElementById('pcVideo');
+    if (pcVideo) {
+        pcVideo.addEventListener('loadedmetadata', () => {
+            pcVideo.currentTime = 5;
+        });
+    }
+
+    // Helper function for smooth scrolling
+    function scrollToSection(sectionId) {
         const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }
+    }
 
-      document.addEventListener('DOMContentLoaded', () => {
+    // All initialization in a single DOMContentLoaded event
+    document.addEventListener('DOMContentLoaded', () => {
         // Attach to hero buttons
         document.querySelector('.btn-primary-3d').addEventListener('click', () => scrollToSection('activities'));
         document.querySelector('.btn-secondary-3d').addEventListener('click', () => scrollToSection('magazine'));
-        
+
         // Attach to nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -747,44 +2559,25 @@ Dévouée à soutenir les personnes défavorisées et les communautés vulnérab
         });
 
         // Enhanced Header Scroll Effect
+        
         let lastScrollY = window.scrollY;
         const header = document.querySelector('.header');
         if (header) {
-          window.addEventListener('scroll', () => {
-              const currentScrollY = window.scrollY;
-              if (currentScrollY > 100) {
-                  header.classList.add('scrolled');
-                  if (currentScrollY > lastScrollY) {
-                      header.classList.add('hidden-nav');
-                  } else {
-                      header.classList.remove('hidden-nav');
-                  }
-              } else {
-                  header.classList.remove('scrolled', 'hidden-nav');
-              }
-              lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
-          }, { passive: true });
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > 100) {
+                    header.classList.add('scrolled');
+                    if (currentScrollY > lastScrollY) {
+                        header.classList.add('hidden-nav');
+                    } else {
+                        header.classList.remove('hidden-nav');
+                    }
+                } else {
+                    header.classList.remove('scrolled', 'hidden-nav');
+                }
+                lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+            }, { passive: true });
         }
-
-        // Enhanced 3D Tilt Effect for Cards
-        document.querySelectorAll('.activity-card, .featured-card, .product-card, .branch-card').forEach(cardEl => {
-            const card = cardEl;
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 15;
-                const rotateY = (centerX - x) / 15;
-                
-                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) scale(1)';
-            });
-        });
 
         // Ripple effect for buttons
         document.querySelectorAll('.btn-3d, .btn-glow, .btn-outline, .slider-btn').forEach(btnEl => {
@@ -823,8 +2616,8 @@ Dévouée à soutenir les personnes défavorisées et les communautés vulnérab
         if (sliderEl) {
             const sliderContainer = sliderEl.querySelector('.slider-container');
             const sliderCards = sliderEl.querySelectorAll('.magazine-card');
-            const prevBtn = sliderEl.querySelector('#prevBtn');
-            const nextBtn = sliderEl.querySelector('#nextBtn');
+            const nextBtn = sliderEl.querySelector('#prevBtn');
+            const prevBtn = sliderEl.querySelector('#nextBtn');
             const totalSlides = sliderCards.length;
             let currentIndex = 0;
             let autoSlideInterval;
@@ -838,7 +2631,7 @@ Dévouée à soutenir les personnes défavorisées et les communautés vulnérab
                     let rotateY = position * 25; // Rotation angle
                     let scale = 1 - Math.abs(position) * 0.15; // Scale based on position
                     let opacity = 1 - Math.abs(position) * 0.3; // Opacity based on position
-                    
+
                     // Apply transformations
                     card.style.transform = `
                         translateX(${translateX}px) 
@@ -880,43 +2673,263 @@ Dévouée à soutenir les personnes défavorisées et les communautés vulnérab
             };
 
             // Event listeners
-            nextBtn.addEventListener('click', () => {
+            if (nextBtn) nextBtn.addEventListener('click', () => {
                 nextSlide();
                 stopAutoSlide();
-                startAutoSlide();
             });
 
-            prevBtn.addEventListener('click', () => {
+            if (prevBtn) prevBtn.addEventListener('click', () => {
                 prevSlide();
                 stopAutoSlide();
-                startAutoSlide();
             });
 
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') nextSlide();
-                if (e.key === 'ArrowRight') prevSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
             });
 
             // Initialize slider
             positionCards();
-            startAutoSlide();
         }
 
         // Animation on scroll for branches section
-        const branchCards = document.querySelectorAll('.branch-card');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'slideUp 0.6s forwards';
+        const inner = document.querySelector('.inner');
+        if (inner) {
+            const quantity = parseInt(inner.style.getPropertyValue('--quantity')) || 10;
+            const cards = inner.querySelectorAll('.card');
+            let angle = 0;
+
+            function updateCards() {
+                cards.forEach((card, i) => {
+                    const theta = (360 / quantity) * i + angle;
+                    card.style.transform = `
+                        rotateY(${theta}deg)
+                        translateZ(calc((160px + 220px) + 0px))
+                    `;
+                });
+            }
+
+            function rotate(direction) {
+                angle += direction * (360 / quantity);
+                updateCards();
+            }
+
+            document.getElementById('rotateLeft').addEventListener('click', () => rotate(-1));
+            document.getElementById('rotateRight').addEventListener('click', () => rotate(1));
+
+            updateCards();
+        }
+
+        // --- Glow Card Infinite Scroll Logic ---
+        class InfiniteCardSlider {
+            constructor(section) {
+                this.section = section;
+                this.container = section.querySelector('[data-glow-scroll-container]');
+                this.leftBtn = section.querySelector('.glow-scroll-btn-left');
+                this.rightBtn = section.querySelector('.glow-scroll-btn-right');
+                this.gap = 40;
+
+                this.cards = Array.from(this.container.children);
+                this.cardWidth = this.cards[0].offsetWidth + this.gap;
+                this.cloneForInfiniteScroll();
+                this.init();
+                // this.setupScrollLoopCorrection(); // If you have this method, keep it, else remove.
+            }
+            cloneForInfiniteScroll() {
+                const originalCards = Array.from(this.container.children);
+                const total = originalCards.length;
+                const repeatCount = 100;
+                const targetIndex = 50 * total;
+
+                // Hide scroll during setup
+                this.container.style.visibility = 'hidden';
+                this.container.style.overflow = 'hidden';
+
+                this.container.innerHTML = '';
+
+                for (let r = 0; r < repeatCount; r++) {
+                    for (let i = 0; i < total; i++) {
+                        const clone = originalCards[i].cloneNode(true);
+                        this.container.appendChild(clone);
+                    }
+                }
+
+                this.cards = Array.from(this.container.querySelectorAll('.glow-card'));
+
+                requestAnimationFrame(() => {
+                    const targetCard = this.cards[targetIndex];
+
+                    if (targetCard) {
+                        const targetOffset = targetCard.offsetLeft;
+                        this.container.scrollLeft = targetOffset;
+                    }
+
+                    // Restore scroll & visibility after positioning
+                    requestAnimationFrame(() => {
+                        this.container.style.visibility = 'visible';
+                        this.container.style.overflow = 'auto';
+                    });
+                });
+            }
+
+            init() {
+                // Click events
+                this.leftBtn.addEventListener('click', () => this.scroll('left'));
+                this.rightBtn.addEventListener('click', () => this.scroll('right'));
+            }
+
+            scroll(direction) {
+                if (direction === 'right') {
+                    const scrollBy = this.cardWidth;
+                    setTimeout(() => {
+                        this.container.scrollBy({ left: -scrollBy, behavior: 'smooth' });
+                    }, 100);
+                }
+
+                if (direction === 'left') {
+                    const scrollBy = this.cardWidth;
+                    setTimeout(() => {
+                        this.container.scrollBy({ left: +scrollBy, behavior: 'smooth' });
+                    }, 100);
+                }
+            }
+        }
+
+        // Initialiser les sliders
+        document.querySelectorAll('.glow-card-section').forEach(section => {
+            new InfiniteCardSlider(section);
+        }); 
+        const categoryColors = {
+                'quran': '#00B4A6',
+                'olympics': '#FFD700',
+                'magazine': '#0055A5',
+                'events': '#E63946'
+            };
+            
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Lightbox functionality
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxClose = document.getElementById('lightbox-close');
+            
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    const isVideo = this.classList.contains('video');
+                    const title = this.querySelector('.gallery-title').textContent;
+                    
+                    if (isVideo) {
+                        // For demo, we'll show a placeholder video
+                        lightboxVideo.style.display = 'block';
+                        lightboxImg.style.display = 'none';
+                        lightboxVideo.src = "https://player.vimeo.com/video/76979871?h=8272103f6e";
+                        lightboxVideo.controls = true;
+                    } else {
+                        lightboxImg.style.display = 'block';
+                        lightboxVideo.style.display = 'none';
+                        // Use the background image for lightbox
+                        const bgImg = this.style.backgroundImage;
+                        // Extract URL from background-image property
+                        const imgUrl = bgImg.replace('url("', '').replace('")', '');
+                        lightboxImg.src = imgUrl;
+                    }
+                    
+                    lightboxCaption.textContent = title;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close lightbox
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                lightboxVideo.pause();
+            });
+            
+            // Close lightbox when clicking outside
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    lightboxVideo.pause();
                 }
             });
-        }, { threshold: 0.1 });
-        
-        branchCards.forEach(card => {
-            observer.observe(card);
-        });
-      });
-    </script>
+            
+            // Add color indicators to filter buttons
+            filterButtons.forEach(button => {
+                const filter = button.getAttribute('data-filter');
+                if (filter !== 'all') {
+                    button.style.borderColor = categoryColors[filter];
+                }
+            });
+            
+            // Add hover effect to gallery items based on category
+            galleryItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                item.addEventListener('mouseenter', function() {
+                    this.style.borderColor = categoryColors[category];
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                });
+            });
+            const contactForm = document.getElementById('contact-form');
+            const contactItems = document.querySelectorAll('.contact-item');
+            
+            // Form submission handler
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                
+                // Show success state
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> تم الإرسال بنجاح';
+                submitBtn.style.background = 'linear-gradient(135deg, var(--teal-green), #00C9A7)';
+                
+                // Reset after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = 'linear-gradient(135deg, var(--ensam-blue), var(--bright-orange))';
+                    contactForm.reset();
+                }, 3000);
+                });
+            
+            // Animate contact items on page load
+            contactItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = "1";
+                    item.style.transform = "translateY(0)";
+                }, 200 * index);
+            });
+    });
+</script>
 </body>
 </html>
